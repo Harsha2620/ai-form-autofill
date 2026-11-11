@@ -39,9 +39,10 @@ Rules:
 - Keys are the field ids. Each value is {"value": ..., "confidence": "high"|"medium"|"low"}.
 - If a value is not clearly present in the document, use {"value": null, "confidence": null}. Never guess.
 - number fields: a number only. date fields: YYYY-MM-DD. checkbox: true or false.
+- For number fields: never return 0 unless the document explicitly states 0. If unsure, return null.';
 - dropdown: return exactly one of the given options, otherwise null.`;
 
-    const MODELS = ["gemini-flash-latest", "gemini-3.5-flash-lite", "gemini-2.5-flash"];
+    const MODELS = ["gemini-3.5-flash-lite", "gemini-flash-latest", "gemini-2.5-flash"];
 let result = null;
 let lastErr = null;
 
