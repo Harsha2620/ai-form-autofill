@@ -45,7 +45,7 @@ export default function App() {
       const fd = new FormData();
       fd.append("file", file);
       fd.append("fields", JSON.stringify(fields));
-      const res = await fetch("http://localhost:5000/extract", { method: "POST", body: fd });
+      const res = await fetch((import.meta.env.VITE_API_URL || "http://localhost:5000") + "/extract", { method: "POST", body: fd });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Extraction failed.");
 
